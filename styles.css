@@ -274,6 +274,7 @@ body {
     position: absolute;
     bottom: 36%;
     right: 95px;
+    height: 140px;
     z-index: 3;
 }
 

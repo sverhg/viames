@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
             resultText.innerHTML = `
                 <p>На основе анализа полётных данных:</p>
                 <p>
-                    Вам осталось <strong>${randomStakes}</strong> ставок со ставкой <strong>${bet}₽</strong>
+                    Вам осталось <strong>${randomStakes}</strong> ставок со ставкой <strong>${bet}</strong>
                     до заноса <strong>Х${randomMultiplier}</strong> с вероятностью <strong>${randomChance}%</strong>
                 </p>
             `;
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
             resultText.innerHTML = `
                 <p>Based on the flight data analysis:</p>
                 <p>
-                    You need <strong>${randomStakes}</strong> more bets of <strong>${bet}₽</strong>
+                    You need <strong>${randomStakes}</strong> more bets of <strong>${bet}</strong>
                     to hit <strong>X${randomMultiplier}</strong> with a probability of <strong>${randomChance}%</strong>
                 </p>
             `;
