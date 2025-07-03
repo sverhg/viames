@@ -931,8 +931,9 @@ body {
 .telegram-button-container {
     position: fixed;
     bottom: 40px;
-    right: 20px;
+    left: 50%;
     z-index: 100;
+    transform: translateX(-50%);
 }
 
 .telegram-button {
