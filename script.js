@@ -67,47 +67,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const randomDataPoints = Math.floor(Math.random() * 300 + 700);
         const randomAccuracy = (Math.random() * 15 + 85).toFixed(0) + "%";
-        const randomStakes = Math.floor(Math.random() * (35 - 15 + 1)) + 15;
-        const randomMultiplier = Math.floor(Math.random() * (66 - 13 + 1)) + 13;
+        const randomStakes = Math.floor(Math.random() * (19 - 7 + 1)) + 7;
+        const randomMultiplier = Math.floor(Math.random() * (35 - 10 + 1)) + 10;
         const randomChance = Math.floor(Math.random() * (89 - 69 + 1)) + 69;
 
         dataPoints.textContent = randomDataPoints;
         accuracy.textContent = randomAccuracy;
 
+        const isUnfavorable = randomMultiplier < randomStakes;
+
         if (lang === "ru") {
-            resultText.innerHTML = `
-                <p>На основе анализа полётных данных:</p>
-                <p>
-                    Вам осталось <strong>${randomStakes}</strong> ставок со ставкой <strong>${bet}</strong>
-                    до заноса <strong>Х${randomMultiplier}</strong> с вероятностью <strong>${randomChance}%</strong>
-                </p>
-            `;
+            if (isUnfavorable) {
+                resultText.innerHTML = `
+                    <p>Попробуйте через 5 минут!</p>
+                    <p>Анализ показал, что сейчас неблагоприятное время для ставок.</p>
+                `;
+            } else {
+                resultText.innerHTML = `
+                    <p>На основе анализа полётных данных:</p>
+                    <p>
+                        Вам осталось <strong>${randomStakes}</strong> ставок со ставкой <strong>${bet}</strong>
+                        до заноса <strong>Х${randomMultiplier}</strong> с вероятностью <strong>${randomChance}%</strong>
+                    </p>
+                `;
+            }
         } else {
-            resultText.innerHTML = `
-                <p>Based on the flight data analysis:</p>
-                <p>
-                    You need <strong>${randomStakes}</strong> more bets of <strong>${bet}</strong>
-                    to hit <strong>X${randomMultiplier}</strong> with a probability of <strong>${randomChance}%</strong>
-                </p>
-            `;
+            if (isUnfavorable) {
+                resultText.innerHTML = `
+                    <p>Try again in 5 minutes!</p>
+                    <p>The analysis showed that now is not a favorable time for betting.</p>
+                `;
+            } else {
+                resultText.innerHTML = `
+                    <p>Based on the flight data analysis:</p>
+                    <p>
+                        You need <strong>${randomStakes}</strong> more bets of <strong>${bet}</strong>
+                        to hit <strong>X${randomMultiplier}</strong> with a probability of <strong>${randomChance}%</strong>
+                    </p>
+                `;
+            }
         }
     }
 
-    // Close Result Modal (кнопка с крестиком)
+    // Close Result Modal
     closeBtn.addEventListener("click", () => {
         resultModal.classList.remove("show");
         startContainer.classList.remove("hidden");
         betAmount.value = "";
     });
 
-    // Close Result Modal (кнопка ЗАКРЫТЬ)
     closeResultBtn.addEventListener("click", () => {
         resultModal.classList.remove("show");
         startContainer.classList.remove("hidden");
         betAmount.value = "";
     });
 
-    // Restart
     restartBtn.addEventListener("click", () => {
         resultModal.classList.remove("show");
         startContainer.classList.remove("hidden");
@@ -170,7 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
                <path d="M16 0v24M0 12h32" stroke="#c8102e" stroke-width="2"/>`;
     }
 
-    // Language dropdown
     languageToggle.addEventListener("click", () => {
         languageDropdown.classList.toggle("show");
     });
@@ -183,5 +196,5 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    updateLanguage(); // apply default language
+    updateLanguage(); // Применить язык по умолчанию
 });
