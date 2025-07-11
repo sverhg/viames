@@ -86,8 +86,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 resultText.innerHTML = `
                     <p>На основе анализа полётных данных:</p>
                     <p>
-                        Вам осталось <strong>$14</strong> ставок со ставкой <strong>$1000</strong>
-                        до заноса <strong>Х$30</strong> с вероятностью <strong>${randomChance}%</strong>
+                        Вам осталось <strong>14</strong> ставок со ставкой <strong>1000</strong>
+                        до заноса <strong>Х30</strong> с вероятностью <strong>${randomChance}%</strong>
                     </p>
                 `;
             }
